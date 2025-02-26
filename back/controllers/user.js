@@ -54,6 +54,6 @@ try{
 }
 }
 
-export async function LogoutUser(req, res) {
-    res.clearCookie('loginToken')
-}
+// export async function LogoutUser(req, res) {
+//     res.clearCookie('loginToken')
+// }

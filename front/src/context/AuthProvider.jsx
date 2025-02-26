@@ -10,16 +10,36 @@ function AuthProvider({ children }) {
     }, [])
 
     async function checkAuth() {
-        const response = await instance.get("/auth/check", { withCredentials: true, })
-        if (response.status === 200) setIsUserLoggedIn(true)
+        
+        try {
+            await instance.get("/auth/check", {
+              withCredentials: true,
+            });
+            setIsUserLoggedIn(true);
+          } catch (error) {
+            console.log(error);
+            setIsUserLoggedIn(false); // Ensure logout state
+          }
     }
-    async function Logout() {
-        const response = await instance.post("/LogoutUser", { withCredentials: true })
-        if(response.status === 200) setIsUserLoggedIn()
-
-    }
+    
+    
+    async function logout() {
+        try {
+          await instance.post(
+            "/auth/logout",
+            {},
+            {
+              withCredentials: true,
+            }
+          );
+          setIsUserLoggedIn(false);
+          checkAuth(); //Ensures the auth state is updated
+        } catch (error) {
+          console.log(error);
+        }
+      }
     return (
-        <AuthContext.Provider value={{ isUserLoggedIn, Logout }}>
+        <AuthContext.Provider value={{ isUserLoggedIn, logout , checkAuth }}>
             {children}
         </AuthContext.Provider>
     )

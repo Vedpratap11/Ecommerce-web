@@ -6,36 +6,8 @@ import productRouter from "./routes/productRoutes.js"
 import userRouter from "./routes/userRoutes.js"
 
 import "dotenv/config"
-import authRouter from "./routes/authRoutes.js"
-// //Schema is a blueprint of how the data will be stored in the database
-// const productSchema = new mongoose.Schema({
-//     title:{
-//         type: String,
-//         required: true,
-//     },
-//     brand: {
-//         type: String,
-//         required: true,
-//     },
-//     category: {
-//         type: String,
-//         required: true,
-//     },
-//     usualPrice : {
-//         type: Number,
-//         required: true,
-//     },
-//     discountedPrice: {
-//         type: Number,
-        
-//     }
-
-
-// })
-
-// //Model is a class with which we construct documents
-// const Product = mongoose.model("Product", productSchema)
-
+import authRouter from "./routes/authRouter.js"
+import cookieParser from "cookie-parser"
 const port = process.env.PORT
 const app = express()
 
@@ -46,6 +18,7 @@ const corsOptions = {
 }
 
 app.use(cors(corsOptions))
+app.use(cookieParser())
 
 app.use(express.json())
 app.use(express.urlencoded({extended: true}))

@@ -1,8 +1,11 @@
 import React, { useState } from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import instance from "../axiosConfig"
+import { useAuth } from '../context/AuthProvider'
 
 function Login() {
+    // const navigate = useNavigate();
+    const {checkAuth} = useAuth()
     const [data, setData] = useState({
         email:"",
         password:"",
@@ -20,12 +23,15 @@ function Login() {
     try {
       const response = await instance.post("/user/login", data , {withCredentials: true,})
       console.log(response.data);
-      // window.location.href("/")
-
-  } catch (error) {
+      checkAuth();
+      if (
+        response.status === 200 &&
+        response.data.message === "Login Successful"
+      )
+        // navigate("/");
+        window.location.href("/")
+    } catch (error) {
       console.log(error);
-
-
     }}
   return (
     <>

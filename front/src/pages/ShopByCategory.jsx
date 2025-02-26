@@ -2,8 +2,8 @@
 import { useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { useEcom } from "../context/EcomProvider";
-import DisplayProduct from "../components/DisplayProduct";
-import Loader from "../components/Loader";
+import DisplayProduct from "../Components/DisplayProduct.jsx";
+import Loader from "../Components/Loader.jsx";
 
 
 function ShopByCategory() {

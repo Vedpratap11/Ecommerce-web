@@ -9,9 +9,15 @@ import { useAuth } from "../context/AuthProvider";
 function Header() {
   const [dropdownOpen, setDropdownOpen] = useState(false);
   const { cart, categories, fetchCategories } = useEcom();
-  const {isUserLoggedIn, Logout} = useAuth()
+  const {isUserLoggedIn, logout} = useAuth()
+  // const [authState , setAuthState] = useState(isUserLoggedIn)
 
 
+  
+    // useEffect(() => {
+    //   setAuthState(isUserLoggedIn);
+    // }, [isUserLoggedIn]);
+  
  // When the Header component mounts for the first time and also it is without dependency which means it will not run again unless the component is unmounted and remounted. 
 
   useEffect(() => {
@@ -89,7 +95,7 @@ function Header() {
           </div>
         </li>
 
-         <li>{isUserLoggedIn ?   <Link onClick={Logout}>Logout</Link> : <Link to="/user/login">Login</Link>}</li>
+         {isUserLoggedIn ?  <li> <button onClick={logout}>Logout</button></li> : <li><Link to="/user/login">Login</Link></li>}
 
         <Link to="/cart">
           <p className="flex relative">

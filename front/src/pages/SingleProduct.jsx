@@ -1,10 +1,11 @@
 import { useState, useEffect } from "react";
-import instance from "../axiosConfig";
+// import instance from "../axiosConfig";
 import { useParams } from "react-router-dom";
 import { MdOutlineCurrencyRupee } from "react-icons/md";
 import { useEcom } from "../context/EcomProvider";
 import Loader from "../Components/Loader.jsx";
 import DisplayProduct from "../Components/DisplayProduct.jsx";
+import axios from "axios";
 
 function SingleProduct() {
   const [product, setProduct] = useState({});
@@ -25,7 +26,7 @@ function SingleProduct() {
   async function fetchProduct(id) {
     try {
       setLoading(true);
-      const response = await instance.get(`/product/${id}`);
+      const response = await axios.get(`https://ecommerce-api-8ga2.onrender.com/api/product/${id}`);
       setProduct(response.data);
     } catch (error) {
       console.log(error);

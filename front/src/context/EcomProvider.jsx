@@ -43,7 +43,7 @@ function EcomProvider({ children }) {
   async function fetchCategories(){
     try {
       setLoading(true);
-      const response = await axios.get("https://ecommerce-api-8ga2.onrender.com/api");
+      const response = await axios.get("https://ecommerce-api-8ga2.onrender.com/api/categories/all");
       console.log(response.data);
       setCategories(response.data);
     } catch (error) {
@@ -58,7 +58,7 @@ function EcomProvider({ children }) {
   async function filterByCategory(category) {
     try {
       setLoading(true);
-      const response = await instance.get("/product/?category=" + category);
+      const response = await axios.get("https://ecommerce-api-8ga2.onrender.com/api/product/?category=" + category);
       setProductsByCat(response.data);
     } catch (error) {
       console.log(error);
