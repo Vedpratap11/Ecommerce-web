@@ -32,7 +32,7 @@ function AddProduct() {
         frm.append("discountedPrice", form.discountedPrice)
         frm.append("image", form.image)
 
-        const response = await instance.post("/product/add", frm)
+        const response = await instance.post("/product/add", frm, {withCredentials: true})
         console.log(response)
 
     }

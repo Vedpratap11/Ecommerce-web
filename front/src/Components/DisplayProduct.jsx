@@ -13,14 +13,14 @@ function DisplayProduct({product}) {
                   <div key={item._id} className="text-center">
                     <Link to={`/product/${item._id}`}>
                       <img
-                        src={item.url}
+                        src={item.image}
                         className="w-[14rem] h-[14rem] object-contain"
                       />
                     </Link>
                     <h2 className="my-2">
-                      {item.name.length > 5
-                        ? item.name.split(" ").slice(0, 5).join(" ")
-                        : item.name}
+                      {item.title.length > 5
+                        ? item.title.split(" ").slice(0, 5).join(" ")
+                        : item.title}
                     </h2>
                     <p className="my-2 flex items-center justify-center">
                       <span>

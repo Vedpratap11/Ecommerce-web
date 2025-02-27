@@ -4,6 +4,7 @@
 import { createContext, useContext, useState } from "react"; // create and use context are react hooks used to manage and consume context. 
 // import instance from "../axiosConfig"; // It is an axios instance used to make http requests. 
 import axios from "axios";
+import instance from "../axiosConfig";
 
 
 // Context in react is made to solve the problem of prop drilling and to provide shared state or functions to multiple components. 
@@ -28,7 +29,8 @@ function EcomProvider({ children }) {
   async function fetchProduct() {
     try {
       setLoading(true);
-      const response = await axios.get("https://ecommerce-api-8ga2.onrender.com/api/product");
+      // const response = await axios.get("https://ecommerce-api-8ga2.onrender.com/api/product");
+      const response = await instance.get("/product/get", {withCredentials:true})
       setProduct(response.data);
     } catch (error) {
       console.log(error);
