@@ -24,7 +24,7 @@ const storage = multer.diskStorage({
 
 
 
-console.log(upload)
+// console.log(upload)
 
 
 

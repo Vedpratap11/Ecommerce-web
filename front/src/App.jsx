@@ -10,6 +10,7 @@ import AddProduct from "./admin/AddProduct.jsx";
 import Register from "./pages/Register.jsx";
 import Login from "./pages/Login.jsx";
 import AuthProvider from "./context/AuthProvider.jsx";
+import AddCategory from "./admin/AddCategory.jsx";
 
 
 
@@ -49,6 +50,10 @@ const router = createBrowserRouter([
       {
         path:"/user/login",
         element:<Login/>
+      },
+      {
+        path:"/admin/AddCategory",
+        element:<AddCategory/>
       }
     ],
     },

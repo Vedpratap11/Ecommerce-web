@@ -22,7 +22,7 @@ function AddCategory() {
             const frm = new FormData()
             frm.append("name",form.name),
             frm.append("image", form.image)
-            const response = await instance.post("/product/category/add", frm, {withCredentials: true})
+            const response = await instance.post("/product/category/add",frm, {withCredentials: true})
             console.log(response.data)
         }catch(error){
             console.log(error)
@@ -32,7 +32,8 @@ function AddCategory() {
     <>
       <form action="" encType="multipart/form-data" onSubmit={handleSubmit}>
         <input type="text" name="name" value={form.name} onChange={handleChange}/>
-        <input type="text" name="image"  onChange={handleChange}/>
+        <input type="file" name="image"  onChange={handleChange}/>
+        <button type="submit">Submit</button>
       </form>
     </>
   )
