@@ -8,6 +8,7 @@ function AddProduct() {
     category:"",
     usualPrice:"",
     discountedPrice:"",
+    percentageDiscount:"",
     image:"",
    })
 
@@ -30,11 +31,19 @@ function AddProduct() {
         frm.append("category", form.category)
         frm.append("usualPrice", form.usualPrice)
         frm.append("discountedPrice", form.discountedPrice)
+        frm.append("percentageDiscount", form.percentageDiscount)
         frm.append("image", form.image)
 
         const response = await instance.post("/product/add", frm, {withCredentials: true})
         console.log(response)
-
+       setForm({
+        title:"",
+        brand:"",
+        category:"",
+        usualPrice:"",
+        discountedPrice:"",
+        percentageDiscount:"",
+       })
     }
     catch(error){
         console.log(error)
@@ -48,8 +57,9 @@ function AddProduct() {
         <input type="text" placeholder="Enter Product Title"  name="title" value={form.title} onChange={handleChange}/>
         <input type="text" placeholder="Enter Product Brand"  name="brand" value={form.brand} onChange={handleChange}/>
         <input type="text" placeholder="Enter Product Category" name="category"  value={form.category} onChange={handleChange}/>
-        <input type="text" placeholder="Enter Product Usual Price"  name="usualPrice" value={form.usualPrice} onChange={handleChange}/>
-        <input type="text" placeholder="Enter Product Discounted Price" name="discountedPrice"  value={form.discountedPrice} onChange={handleChange}/>
+        <input type="number" placeholder="Enter Product Usual Price"  name="usualPrice" value={form.usualPrice} onChange={handleChange}/>
+        <input type="number" placeholder="Enter Product Discounted Price" name="discountedPrice"  value={form.discountedPrice} onChange={handleChange}/>
+        <input type="number" placeholder="Enter Percentage Discount" name="percentageDiscount" value={form.percentageDiscount} onChange={handleChange}/>
         <input type="file" name="image" onChange={handleChange} />
         <button type="Submit">Add Product</button>
     </form>

@@ -26,7 +26,13 @@ function DisplayProduct({product}) {
                       <span>
                         <MdOutlineCurrencyRupee />
                       </span>
-                      {item.price}
+                      {item.usualPrice}
+                    </p>
+                    <p className="my-2 flex items-center justify-center">
+                      <span>
+                        <MdOutlineCurrencyRupee />
+                      </span>
+                      {item.discountedPrice}
                     </p>
                     <button className="rounded px-2 py-1 bg-blue-400 text-white">
                       Add to Wishlist

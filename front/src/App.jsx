@@ -11,6 +11,7 @@ import Register from "./pages/Register.jsx";
 import Login from "./pages/Login.jsx";
 import AuthProvider from "./context/AuthProvider.jsx";
 import AddCategory from "./admin/AddCategory.jsx";
+import HotDeals from "./Components/HotDeals.jsx";
 
 
 
@@ -54,6 +55,10 @@ const router = createBrowserRouter([
       {
         path:"/admin/AddCategory",
         element:<AddCategory/>
+      },
+      {
+        path:"/hotDeals",
+        element:<HotDeals/>
       }
     ],
     },

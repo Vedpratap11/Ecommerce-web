@@ -21,7 +21,7 @@ async function uploadToCloudinary(req) {
            .catch((error) => {
                console.log(error);
             });
-            return(uploadResult.secure_url)
+            return uploadResult.secure_url
         
         console.log(uploadResult);
         

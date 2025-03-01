@@ -4,6 +4,7 @@ import { FaCartShopping } from "react-icons/fa6";
 import { FaHeart } from "react-icons/fa";
 import { useEffect, useState } from "react";
 import { useAuth } from "../context/AuthProvider";
+// import HotDeals from "../Components/HotDeals"
 
 
 function Header() {
@@ -30,6 +31,7 @@ function Header() {
         <div className="font-bold text-xl">Ecommerce</div>
       </Link>
       <ul className="flex gap-4">
+        <Link to="/hotDeals">HotDeals</Link>
         <Link to="/">
           <li>Home</li>
         </Link>
@@ -78,15 +80,15 @@ function Header() {
             >
               {categories.length > 0 &&
                 categories.map((category, index) => {
-                  console.log(categories)
+                  // console.log(categories)
                   
                   return (
                     <li key={index}>
                       <a
-                        href={`/category/${category.category.toLowerCase()}`}
+                        href={`/category/${category.name.toLowerCase()}`}
                         className="block w-full px-4 py-2 hover:bg-gray-500 dark:hover:bg-gray-600 dark:hover:text-white text-left"
                       >
-                        {category.category}
+                        {category.name}
                       </a>
                     </li>
                   );
