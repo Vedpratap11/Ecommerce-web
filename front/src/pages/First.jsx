@@ -1,7 +1,7 @@
 import Header from "../Components/Header"
 import Footer from "../Components/Footer"
 import {Outlet} from "react-router-dom"
-import HotDeals from "../Components/HotDeals"
+// import HotDeals from "../Components/HotDeals"
 
 
 function First() {
@@ -9,7 +9,7 @@ function First() {
     <>
     <Header />
     <Outlet />
-    <HotDeals/>
+    {/* <HotDeals/> */}
     <Footer />
     </>
   )

@@ -12,6 +12,8 @@ import Login from "./pages/Login.jsx";
 import AuthProvider from "./context/AuthProvider.jsx";
 import AddCategory from "./admin/AddCategory.jsx";
 import HotDeals from "./Components/HotDeals.jsx";
+import ProtectedRoute from "./Components/ProtectedRoute.jsx"
+import AdminLogin from "./pages/AdminLogin.jsx"
 
 
 
@@ -42,7 +44,11 @@ const router = createBrowserRouter([
       },
       {
         path:"/admin/AddProduct",
-        element:<AddProduct />
+        element:<ProtectedRoute><AddProduct /></ProtectedRoute>
+      },
+      {
+        path: "/admin/login",
+        element: <AdminLogin/> 
       },
       {
         path:"/user/register",

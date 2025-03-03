@@ -6,20 +6,17 @@ import { useEffect, useState } from "react";
 import { useAuth } from "../context/AuthProvider";
 // import HotDeals from "../Components/HotDeals"
 
-
 function Header() {
   const [dropdownOpen, setDropdownOpen] = useState(false);
   const { cart, categories, fetchCategories } = useEcom();
-  const {isUserLoggedIn, logout} = useAuth()
+  const { isUserLoggedIn, logout, isAdminLoggedIn } = useAuth();
   // const [authState , setAuthState] = useState(isUserLoggedIn)
 
+  // useEffect(() => {
+  //   setAuthState(isUserLoggedIn);
+  // }, [isUserLoggedIn]);
 
-  
-    // useEffect(() => {
-    //   setAuthState(isUserLoggedIn);
-    // }, [isUserLoggedIn]);
-  
- // When the Header component mounts for the first time and also it is without dependency which means it will not run again unless the component is unmounted and remounted. 
+  // When the Header component mounts for the first time and also it is without dependency which means it will not run again unless the component is unmounted and remounted.
 
   useEffect(() => {
     fetchCategories();
@@ -72,7 +69,9 @@ function Header() {
 
           <div
             id="dropdown"
-            className={`z-1 ${dropdownOpen ? 'block' : 'hidden'} bg-white divide-y divide-gray-100 shadow-sm w-44 dark:bg-amber-400 absolute mt-3`}
+            className={`z-1 ${
+              dropdownOpen ? "block" : "hidden"
+            } bg-white divide-y divide-gray-100 shadow-sm w-44 dark:bg-amber-400 absolute mt-3`}
           >
             <ul
               className="py-2 text-sm text-black dark:text-black"
@@ -81,7 +80,7 @@ function Header() {
               {categories.length > 0 &&
                 categories.map((category, index) => {
                   // console.log(categories)
-                  
+
                   return (
                     <li key={index}>
                       <a
@@ -97,7 +96,16 @@ function Header() {
           </div>
         </li>
 
-         {isUserLoggedIn ?  <li> <button onClick={logout}>Logout</button></li> : <li><Link to="/user/login">Login</Link></li>}
+        {isUserLoggedIn || isAdminLoggedIn ? (
+          <li>
+            {" "}
+            <button onClick={logout}>Logout</button>
+          </li>
+        ) : (
+          <li>
+            <Link to="/user/login">Login</Link>
+          </li>
+        )}
 
         <Link to="/cart">
           <p className="flex relative">

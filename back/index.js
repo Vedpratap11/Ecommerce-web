@@ -8,6 +8,10 @@ import productRouter from "./routes/productRoutes.js";
 import userRouter from "./routes/userRoutes.js";
 import dealRouter from "./routes/dealRoutes.js";
 import authRouter from "./routes/authRouter.js";
+import adminRouter from "./routes/adminRoutes.js"
+import bcrypt from "bcrypt"
+
+console.log(await bcrypt.hash("1234567" , 10))
 
 const port = process.env.PORT;
 const app = express();
@@ -28,6 +32,7 @@ app.use("/api/product", productRouter);
 app.use("/api/deals", dealRouter);
 app.use("/api/user", userRouter);
 app.use("/api/auth", authRouter);
+app.use("/api/admin", adminRouter)
 
 connectDB();
 app.listen(port, () => console.log("Sever started at port: ", port));
