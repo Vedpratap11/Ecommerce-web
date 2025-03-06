@@ -35,9 +35,15 @@ export async function addProduct(req, res) {
 export async function fetchProduct(req, res) {
   try {
     let query = {};
+    if(req.params.id){
+      query._id = req.params.id
+    }
     if (req.query.category) {
       // query.category = req.query.category;
-      query.category = { $regex: new RegExp(`^${req.query.category}$`, "i") };
+      const categoryId = await categoryModel.find({
+        name: { $regex: new RegExp(`^${req.query.category}$`, "i") }
+      })
+      query.category = categoryId
     }
 
     const products = await Product.find(query);

@@ -9,6 +9,7 @@ import userRouter from "./routes/userRoutes.js";
 import dealRouter from "./routes/dealRoutes.js";
 import authRouter from "./routes/authRouter.js";
 import adminRouter from "./routes/adminRoutes.js"
+import cartRouter from "./routes/cartRoutes.js"
 import bcrypt from "bcrypt"
 
 console.log(await bcrypt.hash("1234567" , 10))
@@ -33,6 +34,7 @@ app.use("/api/deals", dealRouter);
 app.use("/api/user", userRouter);
 app.use("/api/auth", authRouter);
 app.use("/api/admin", adminRouter)
+app.use("/api/cart", cartRouter)
 
 connectDB();
 app.listen(port, () => console.log("Sever started at port: ", port));

@@ -21,7 +21,7 @@ function EcomProvider({ children }) {
   const [categories, setCategories] = useState([]);
   const [productsByCat, setProductsByCat] = useState([]);
   const [discount, setDiscount] = useState([]);
-
+  console.log(product)
   // fetching all Products
   async function fetchProduct() {
     try {

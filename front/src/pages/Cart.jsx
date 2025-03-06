@@ -13,7 +13,7 @@ function Cart() {
 useEffect(() => {
   if(cart){
     setTotalPrice(cart.reduce((accumulator,current)=>{
-      return accumulator+current.product.price*current.quantity;
+      return accumulator+current.product.discountedPrice*current.quantity;
     },0))
   }
 
@@ -45,15 +45,15 @@ useEffect(() => {
                   className="cartItem flex gap-5 px-4 mb-8"
                 >
                   <img
-                    src={item.product.url}
-                    alt={item.product.name}
+                    src={item.product.image}
+                    alt={item.product.title}
                     className="w-[9rem] h-[9rem]"
                   />
                   <div className="Item-info px-10 pt-4">
                     <h3 className="text-2xl mb-2">{item.product.name}</h3>
                     <p className="flex items-center py-1 font-bold">
                       <MdOutlineCurrencyRupee className="" />
-                      <span>{(item.product.price)}</span>
+                      <span>{(item.product.discountedPrice)}</span>
                     </p>
                   <div className="flex flex-col">
                     <span><strong>Brand:- </strong>{item.product.brand}</span> 
