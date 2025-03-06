@@ -1,7 +1,8 @@
 import bcrypt from "bcrypt"
 import User from "../models/userModels.js";
 import jwt from "jsonwebtoken"
-import { response } from "express";
+// import { response } from "express";
+// import cartModel from "../models/cartModel.js";
 
 export async function registerUser(req, res){
 try{
@@ -41,6 +42,13 @@ try{
 
     console.log("loginToken", loginToken)
 
+    //Retrieve or create user's cart
+    // let cart = await cartModel.findOne({user: user._id}).populate("items.product")
+    // console.log(cart)
+    // if(!cart){
+    //     await cartModel.create({user: user_id , items: []})
+    // }
+
     // strict | lax | none
 
     res.cookie("loginToken", loginToken, {
@@ -54,6 +62,3 @@ try{
 }
 }
 
-// export async function LogoutUser(req, res) {
-//     res.clearCookie('loginToken')
-// }

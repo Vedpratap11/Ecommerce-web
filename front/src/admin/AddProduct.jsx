@@ -9,10 +9,11 @@ function AddProduct() {
     category: "",
     usualPrice: "",
     discountedPrice: "",
+    discountType: "",
+    discount: "",
     percentageDiscount: "",
     image: "",
   });
-
   const { categories } = useEcom();
 
   function handleChange(e) {
@@ -22,6 +23,12 @@ function AddProduct() {
       const { name, value } = e.target;
       setForm({ ...form, [name]: value });
     }
+  }
+
+  function handleDiscountChange(e) {
+    const a = form.discountType === "Percentage" ? form.usualPrice - (e.target.value * form.usualPrice)/100 : form.usualPrice - e.target.value
+    
+    setForm((form)=>({...form ,discountedPrice:a}))
   }
 
   async function handleSubmit(e) {
@@ -62,14 +69,16 @@ function AddProduct() {
         value={form.title}
         onChange={handleChange}
       />
+      <br />
       <input
         type="text"
         placeholder="Enter Product Brand"
         name="brand"
         value={form.brand}
         onChange={handleChange}
+        className="border-2"
       />
-
+      <br />
       <select
         name="category"
         id=""
@@ -87,28 +96,50 @@ function AddProduct() {
           );
         })}
       </select>
-
+      <br />
       <input
         type="number"
         placeholder="Enter Product Usual Price"
         name="usualPrice"
         value={form.usualPrice}
         onChange={handleChange}
+        className="border-2"
       />
+      <br />
+      <select
+        name="discountType"
+        value={form.discountType}
+        onChange={handleChange}
+      >
+        <option value="Percentage">Percentage</option>
+        <option value="Rupees">Rupees</option>
+      </select>
+      <input
+        type="number"
+        name="discount"
+        placeholder={form.discountType === "Percentage" ? "Discount Percent" : "Discount in rupee"}
+        value={form.discount}
+        onChange={handleChange}
+        onBlur={handleDiscountChange}
+      />
+      <br />
       <input
         type="number"
         placeholder="Enter Product Discounted Price"
         name="discountedPrice"
         value={form.discountedPrice}
         onChange={handleChange}
+        className="border-2"
       />
-      <input
+      <br />
+      {/* <input
         type="number"
         placeholder="Enter Percentage Discount"
         name="percentageDiscount"
         value={form.percentageDiscount}
         onChange={handleChange}
-      />
+        className="border-2"
+      /> */}
       <input type="file" name="image" onChange={handleChange} />
       <button type="Submit">Add Product</button>
     </form>
